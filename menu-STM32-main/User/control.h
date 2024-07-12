@@ -4,8 +4,27 @@
 
 //全局变量的声明或定义
 
-//uint8_t KeyDeta;
+extern int16_t Encoder_Count;					//全局变量，用于计数旋转编码器的增量值
 
+typedef enum
+{									//各个字符对应的行号
+	L_Min = 0,				 	//亮灯灭灯
+	L_Max = 100,			//电机控制
+	menu_temperature = 9,			//温度控制
+	menu_light_green = 13,			//绿灯：
+	menu_light_red   = 17,			//红灯：
+	menu_electrical_switch = 21,	//开机：
+	menu_electrical_speed  = 25,	//转速：
+}word;
+
+typedef enum 
+{
+	first_line    = 1,  //第一行
+	second_line   = 2,	//第二行
+	thirdly_line  = 3,  //第三行
+	fourthly_line = 4,  //第四行
+
+}line_number;
 
 //头文件声明
 
@@ -31,7 +50,6 @@
 
 //函数声明
 void main_Init(void);
-void OLED_Menu(void);
-void DataScope_Get_data(void);
+void OLED_menu(void);
 
 #endif

@@ -97,28 +97,4 @@ void EXTI0_IRQHandler(void)
 	}
 }
 
-/**
-  * 函    数：EXTI1外部中断函数
-  * 参    数：无
-  * 返 回 值：无
-  * 注意事项：此函数为中断函数，无需调用，中断触发后自动执行
-  *           函数名为预留的指定名称，可以从启动文件复制
-  *           请确保函数名正确，不能有任何差异，否则中断函数将不能进入
-  */
-void EXTI1_IRQHandler(void)
-{
-	if (EXTI_GetITStatus(EXTI_Line1) == SET)		//判断是否是外部中断1号线触发的中断
-	{
-		/*如果出现数据乱跳的现象，可再次判断引脚电平，以避免抖动*/
-		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == 0)
-		{
-			if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0)		//PB1的下降沿触发中断，此时检测另一相PB0的电平，目的是判断旋转方向
-			{
-				Encoder_Count ++;					//此方向定义为正转，计数变量自增
-			}
-		}
-		EXTI_ClearITPendingBit(EXTI_Line1);			//清除外部中断1号线的中断标志位
-													//中断标志位必须清除
-													//否则中断将连续不断地触发，导致主程序卡死
-	}
-}
+

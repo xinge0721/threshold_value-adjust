@@ -162,6 +162,45 @@ void OLED_ShowString(uint8_t Line, uint8_t Column, char *String)
 	}
 }
 
+
+/**
+  * @brief  OLED高亮一个字符
+  * @param  Line 行位置，范围：1~4
+  * @param  Column 列位置，范围：1~16
+  * @param  Char 要显示的一个字符，范围：ASCII可见字符
+  * @retval 无
+  */
+void OLED_ShowChar_extrude(uint8_t Line, uint8_t Column, char Char)
+{      	
+	uint8_t i;
+	OLED_SetCursor((Line - 1) * 2, (Column - 1) * 8);		//设置光标位置在上半部分
+	for (i = 0; i < 8; i++)
+	{
+		OLED_WriteData(~OLED_F8x16[Char - ' '][i]);			//显示上半部分内容
+	}
+	OLED_SetCursor((Line - 1) * 2 + 1, (Column - 1) * 8);	//设置光标位置在下半部分
+	for (i = 0; i < 8; i++)
+	{
+		OLED_WriteData(~OLED_F8x16[Char - ' '][i + 8]);		//显示下半部分内容
+	}
+}
+/**
+  * @brief  OLED显示字符串
+  * @param  Line 起始行位置，范围：1~4
+  * @param  Column 起始列位置，范围：1~16
+  * @param  String 要显示的字符串，范围：ASCII可见字符
+  * @retval 无
+  */
+void OLED_ShowString_extrude(uint8_t Line, uint8_t Column, char *String)
+{
+	uint8_t i;
+	for (i = 0; String[i] != '\0'; i++)
+	{
+		OLED_ShowChar(Line, Column + i, String[i]);
+	}
+}
+
+
 /**
   * @brief  OLED次方函数
   * @retval 返回值等于X的Y次方

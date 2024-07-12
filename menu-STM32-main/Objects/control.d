@@ -40,6 +40,7 @@
 .\objects\control.o: .\Hardware\Encoder\Encoder.h
 .\objects\control.o: .\Hardware\Key\Key.h
 .\objects\control.o: .\Hardware\lian2\lian2.h
+.\objects\control.o: .\User\control.h
 .\objects\control.o: .\Hardware\OLED\OLED.h
 .\objects\control.o: .\User\uart\uart.h
 .\objects\control.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

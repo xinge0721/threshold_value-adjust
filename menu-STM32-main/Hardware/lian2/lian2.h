@@ -1,20 +1,22 @@
 #ifndef __lian2_H
 #define __lian2_H
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "control.h"
+
 
 typedef struct line {
-    struct line* prior;//指向直接前趋
+    struct line* prior;//???ò?±?ó?°?÷
     int line;
     int data;
     struct line* up;
-    struct line* next;//指向直接后继
+    struct line* next;//???ò?±?óoó?ì
 }line;
 
-line* line_Init(void);
+line* list_Init(void);
 line* menu_Init(void);
-void line_tail(line* li, int x, int y);
+void line_tail(line* li, int x);
 void menu_tail(line* pr, line* li, int x, int y);
 void menu_tail_t(line* pr, line* li, int x, int y);
+
 
 #endif

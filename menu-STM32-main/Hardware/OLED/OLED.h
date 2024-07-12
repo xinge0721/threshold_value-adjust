@@ -11,4 +11,8 @@ void OLED_ShowSignedNum(uint8_t Line, uint8_t Column, int32_t Number, uint8_t Le
 void OLED_ShowHexNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length);
 void OLED_ShowBinNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length);
 
+void OLED_ShowChar_extrude(uint8_t Line, uint8_t Column, char Char);
+void OLED_ShowString_extrude(uint8_t Line, uint8_t Column, char *String);
+
+
 #endif

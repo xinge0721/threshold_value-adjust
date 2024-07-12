@@ -7,34 +7,16 @@ typedef struct Keys
 	uint8_t judge_sta;//判断按键当前状态—未按下—按下—释放   状态
 	uint8_t Key_sta;//读取引脚的值—引脚的高低电平							 读值
 	uint8_t single_flag;//按键赋值—确认按下某个按键						 赋值
-	uint32_t ky_time;//按键时间
-	uint8_t key_longflag;//长按键
 }Keys;
 
-extern struct Keys key[4];
+extern struct Keys key[2];
 
 void Key_Init(void);
 void Key_Scan(uint8_t i);
 
 
-
-
 #define Key0 PFin(3)
 #define Key1 PFin(4)
-#define Key2 PFin(5)
-#define Key3 PFin(6)
-
-
-#define KEY    ((Key0) && (Key1) && (Key2) && (Key3))//两个条件都为真时结果才为真,否则为假,我们按键只能按一个，无法同时按，人手速度没有这么快，所以始终无论哪个按键按下KEY都是0
-#define KEY0_PRES 1//短按
-#define KEY1_PRES 2//短按
-#define KEY2_PRES 3//短按
-#define KEY3_PRES 4//短按
-#define KEY4_PRES 1//长按
-#define KEY5_PRES 2//长按
-#define KEY6_PRES 3//长按
-#define KEY7_PRES 4//长按
-
 
 
 #define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
