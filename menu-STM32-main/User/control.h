@@ -36,8 +36,7 @@ typedef enum
 #include "lian2.h"
 #include "OLED.h"
 #include "sys.h"
-#include "uart.h"
-
+#include "Serial.h"
 //标准库头文件声明
 
 #include <math.h>

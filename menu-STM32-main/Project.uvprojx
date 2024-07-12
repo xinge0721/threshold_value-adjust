@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware;.\Hardware\Encoder;.\Hardware\Key;.\Hardware\lian2;.\Hardware\OLED;.\User\sys;.\User\uart</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware;.\Hardware\Encoder;.\Hardware\Key;.\Hardware\lian2;.\Hardware\OLED;.\User\sys;.\User\uart;.\User\Serial</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -726,9 +726,9 @@
               <FilePath>.\User\sys\sys.c</FilePath>
             </File>
             <File>
-              <FileName>uart.c</FileName>
+              <FileName>Serial.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\uart\uart.c</FilePath>
+              <FilePath>.\User\Serial\Serial.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -42,5 +42,5 @@
 .\objects\lian2.o: .\Hardware\Key\Key.h
 .\objects\lian2.o: .\Hardware\lian2\lian2.h
 .\objects\lian2.o: .\Hardware\OLED\OLED.h
-.\objects\lian2.o: .\User\uart\uart.h
+.\objects\lian2.o: .\User\Serial\Serial.h
 .\objects\lian2.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

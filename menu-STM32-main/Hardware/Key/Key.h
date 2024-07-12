@@ -7,12 +7,16 @@ typedef struct Keys
 	uint8_t judge_sta;//判断按键当前状态—未按下—按下—释放   状态
 	uint8_t Key_sta;//读取引脚的值—引脚的高低电平							 读值
 	uint8_t single_flag;//按键赋值—确认按下某个按键						 赋值
+	int ky_time;
+	uint8_t key_longflag;
 }Keys;
+
 
 extern struct Keys key[2];
 
 void Key_Init(void);
 void Key_Scan(uint8_t i);
+void Key_eliminate(int KeyDeta);
 
 
 #define Key0 PFin(3)

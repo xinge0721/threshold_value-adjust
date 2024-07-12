@@ -29,37 +29,68 @@ void Key_Scan(uint8_t i)
 	key[i].Key_sta = PFin(data);
 	
 	switch(key[i].judge_sta)
-	{
-		case 0:
-		{
-				if(key[i].Key_sta == 0)
+			{
+				case 0:
 				{
-					key[i].judge_sta  = 1;
+					if(key[i].Key_sta ==0) 
+					{
+						key[i].judge_sta =1;
+						key[i].ky_time = 0;//按键按下时间清0
+					}
+				}
+				break;
+				case 1:
+				{
+					if(key[i].Key_sta ==0)
+					{
+						key[i].judge_sta =2;
+					}
+					else
+					{
+						key[i].judge_sta =0;
+					}
+				}
+				break;
+				case 2:
+				{
+					if(key[i].Key_sta ==1)//松开
+					{
+						key[i].judge_sta =0;
+						if(key[i].ky_time<70)//小于700ms
+						{
+							key[i].ky_time = 0;
+							key[i].single_flag =1;//小于700ms松开手在确认
+						}
+					}
+					else									//按下
+					{
+						key[i].ky_time++;
+						if(key[i].ky_time>70)//大于700ms，到了700ms就执行长按功能
+						{
+							key[i].key_longflag=1;
+						}
+					}
 				}
 				break;
 		}
-		case  1:
-		{
-			if(key[i].Key_sta  == 0)
-			{
-				key[i].judge_sta = 2;
-				key[i].single_flag =1;
-			}
-			else
-			{
-				key[i].judge_sta = 0;
-			}
-			break;
-		}
-		case 2:
-		{
-				if(key[i].Key_sta == 1)
-				{
-						key[i].judge_sta = 0;
-				}
-			break;
-		}
-		
+}
+
+/**
+  * 函    数：消除按键标志位
+  * 参    数：无
+  * 返 回 值：无
+*/
+void Key_eliminate(int KeyDeta)
+{
+	if(key[KeyDeta - 1].Key_sta == 1)
+	{
+			key[KeyDeta - 1].judge_sta = 0;
+			key[KeyDeta - 1].single_flag = 0;
+			key[KeyDeta - 1].key_longflag = 0;
+			KeyDeta	 = 0;
 	}
 }
+
+
+
 

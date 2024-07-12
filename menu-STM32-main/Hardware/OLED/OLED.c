@@ -196,7 +196,7 @@ void OLED_ShowString_extrude(uint8_t Line, uint8_t Column, char *String)
 	uint8_t i;
 	for (i = 0; String[i] != '\0'; i++)
 	{
-		OLED_ShowChar(Line, Column + i, String[i]);
+		OLED_ShowChar_extrude(Line, Column + i, String[i]);
 	}
 }
 
