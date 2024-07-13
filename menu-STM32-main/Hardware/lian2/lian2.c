@@ -1,6 +1,11 @@
 #include "stm32f10x.h"                  // Device header
 #include "lian2.H"
 
+/**
+  * 函    数：菜单的初始化
+	* 参		数：无
+  * 返 回 值：结构体的起点地址
+*/
 line* line_Init(void)
 {
 	line* li = (line*)malloc(sizeof(line));//′′?¨á′±íéú±???
@@ -17,6 +22,13 @@ line* menu_Init(void)
 	return li;
 }
 
+
+/**
+  * 函    数：一级菜单，也就是选择的界面初始化
+  * 参    数：line* li：指向要和他相连的结构体的地址
+							int x :代表着该结构体在OLED中现实的行数
+  * 返 回 值：无
+*/
 void line_tail(line* li, int x)
 {
 	line* ps = (line*)malloc(sizeof(line));
@@ -29,6 +41,15 @@ void line_tail(line* li, int x)
 }
 
 
+/**
+  * 函    数：二级菜单，也就是调参的界面初始化，但这个函数时一级菜单和二级菜单的连接处
+  * 参    数：line* pr：指向要和他相连的结构体的地址
+							line* li：指向一级菜单的地址
+							int x :代表着该结构体在OLED中现实的行数
+							int y :代表着该结构体在OLED中显示的数据
+							int z :代表着调阈值时，向串口发送的数据。
+  * 返 回 值：无
+*/
 void menu_tail(line* pr,line* li, int x, int y,int z)
 {
 	line* ps   = (line*)malloc(sizeof(line));
@@ -43,7 +64,15 @@ void menu_tail(line* pr,line* li, int x, int y,int z)
 	(pr->prior)->next = ps;
 	pr->prior = (pr->prior)->next;
 }
-
+/**
+  * 函    数：二级菜单，也就是调参的界面初始化
+  * 参    数：line* pr：指向要和他相连的结构体的地址
+							line* li：指向一级菜单的地址
+							int x :代表着该结构体在OLED中现实的行数
+							int y :代表着该结构体在OLED中显示的数据
+							int z :代表着调阈值时，向串口发送的数据。
+  * 返 回 值：无
+*/
 void menu_tail_t(line* pr, line* li, int x, int y,int z)
 {
 	line* ps = (line*)malloc(sizeof(line));
@@ -58,7 +87,11 @@ void menu_tail_t(line* pr, line* li, int x, int y,int z)
 }
 
 
-
+/**
+  * 函    数：双向链表的初始化，也就是菜单的初始化
+  * 参    数：无
+  * 返 回 值：指向该链表的指针
+*/
 line* list_Init(void)
 {
 	line* l1 = line_Init();		//初始化菜单链表	
@@ -78,7 +111,7 @@ line* list_Init(void)
 	l2 = line_Init();						//初始化A值的范围
 
 	menu_tail(l2, pz, first_line, -127,101);
-	menu_tail_t(l2, pz, second_line, 127,103);
+	menu_tail_t(l2, pz, second_line, 127,103); 
 
 	pz = pz->next;
 
@@ -90,7 +123,11 @@ line* list_Init(void)
 
 
 
-//切换一级菜单
+/**
+  * 函    数：切换为一级菜单
+  * 参    数：无
+  * 返 回 值：无
+*/
 void list_menu(void)
 {
 	OLED_Clear();				//OLED清屏，确保OLED中不会显示多于的数据。
@@ -99,8 +136,11 @@ void list_menu(void)
 	OLED_ShowString(2,2,"A:Min or Max");
 	OLED_ShowString(3,2,"B:Min or Max");
 }
-//切换二级菜单
-void list_data(line* pr)
+/**
+  * 函    数：切换为二级菜单
+  * 参    数：一级菜单所指向的位置
+  * 返 回 值：无
+*/void list_data(line* pr)
 {
 	OLED_Clear();				//OLED清屏，确保OLED中不会显示多于的数据。
 	OLED_ShowChar(1,1,'*');
@@ -113,10 +153,12 @@ void list_data(line* pr)
 
 
 
+/**
+  * 函    数：调阈值模式
+  * 参    数：进过初始化 line* 的结构体
+  * 返 回 值：无
+*/
 
-
-
-//调阈值模式
 void threshold_value(line* line_sign)
 {
 	char swap = 0;
