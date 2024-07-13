@@ -13,9 +13,9 @@ int main()
 	main_Init();			//硬件初始化
 	OLED_menu();			//OLED界面初始化
 	
-	line* lien = list_Init(); 
-	//对二级菜单完成初始化后，将记录有二级菜单的地址传给lien
-	//以供后续菜单的显示
+	line* lien = list_Init(); //旋转编码器调阈值的初始化
+														//接受这个结构体
+														//然后传到下面的函数，即可开启调阈值模式
 	threshold_value(lien);
 	while(1)
 	{

@@ -30,12 +30,12 @@ void line_tail(line* li, int x)
 }
 
 
-void menu_tail(line* pr,line* li, int x, int y)
+void menu_tail(line* pr,line* li, int x, int y,int z)
 {
-	line* ps = (line*)malloc(sizeof(line));
-	ps->line = x;
-	ps->data = y;
-
+	line* ps   = (line*)malloc(sizeof(line));
+	ps->line   = x;
+	ps->data   = y;
+	ps->Serial = z;
 	ps->up = li;
  	li->up = ps;
 
@@ -45,12 +45,12 @@ void menu_tail(line* pr,line* li, int x, int y)
 	pr->prior = (pr->prior)->next;
 }
 
-void menu_tail_t(line* pr, line* li, int x, int y)
+void menu_tail_t(line* pr, line* li, int x, int y,int z)
 {
 	line* ps = (line*)malloc(sizeof(line));
-	ps->line = x;
-	ps->data = y;
-
+	ps->line  = x;
+	ps->data  = y;
+	ps->Serial = z;
 	ps->up = li;
 	ps->prior = pr->prior;
 	ps->next = (pr->prior)->next;
@@ -71,21 +71,21 @@ line* list_Init(void)
 
 	line* l2 = line_Init();			//初始化L值的范围
 
-	menu_tail(l2, pz, first_line, 0);	//连接功能与菜单的哨兵位
-	menu_tail_t(l2, pz, second_line, 100); //创建正真的功能位，且对应的菜单位不与他的产生联系
+	menu_tail(l2, pz, first_line, 0,97);	//连接功能与菜单的哨兵位
+	menu_tail_t(l2, pz, second_line, 100,99); //创建正真的功能位，且对应的菜单位不与他的产生联系
 
 	pz = pz->next;
 
 	l2 = line_Init();						//初始化A值的范围
 
-	menu_tail(l2, pz, first_line, -127);
-	menu_tail_t(l2, pz, second_line, 127);
+	menu_tail(l2, pz, first_line, -127,101);
+	menu_tail_t(l2, pz, second_line, 127,103);
 
 	pz = pz->next;
 
 	l2 = line_Init();						//初始化B值的范围
-	menu_tail(l2, pz, first_line, -127);
-	menu_tail_t(l2, pz, second_line, 127);
+	menu_tail(l2, pz, first_line, -127,105);
+	menu_tail_t(l2, pz, second_line, 127,107);
 	return l1;						
 }
 
@@ -120,7 +120,8 @@ void list_data(line* pr)
 //调阈值模式
 void threshold_value(line* line_sign)
 {
-	static char swap = 0;
+	char swap = 0;
+	int metering;
 	list_menu();//将OLED中的数据，切换为一级菜单的数据
 	line* line_up = line_sign;
 	line* line    = line_sign ->next;
@@ -211,6 +212,22 @@ void threshold_value(line* line_sign)
 			}
 		}
 
+		
+		
+		if(swap == 1) //若是已经进入二级菜单，则启动旋转编码器的调阈值模式
+		{
+			line->data += Encoder_Get();				//获取自上此调用此函数后，旋转编码器的增量值，并将增量值加到Num上
+			OLED_ShowSignedNum(line->line,6,line->data,3);
+			metering += line->data > 0 ? line->data : -line->data;
+			for(int i = 0 ; i < metering ;i++)
+			{
+				if(line->data >= 0 );
+//					Serial_SendByte(line->Serial);
+				else ;
+//					Serial_SendByte((line->Serial)+1);
+			}
+			metering = 0;
+		}
 	}
 }
 
