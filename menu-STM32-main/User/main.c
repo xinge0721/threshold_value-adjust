@@ -16,7 +16,7 @@ int main()
 	while(1)
 	{
 		
-//		Key_eliminate(KeyDeta);
+//		Key_eliminate(KeyDeta); //若是按下了按键，若是不调用该函数，则按键便会跑飞
 	}
 }
 

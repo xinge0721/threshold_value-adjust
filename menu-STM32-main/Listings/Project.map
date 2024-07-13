@@ -1275,7 +1275,7 @@ Image component sizes
         64          8          0          4          0        625   delay.o
        236         20          0          2          0       1764   encoder.o
        400         18          0          0         36       3568   key.o
-      1006         76          0          0          0       5606   lian2.o
+      1006         76          0          0          0       5614   lian2.o
        172         22          0          1          0       2250   main.o
        132         22          0          0          0     206831   misc.o
        836         26       1520          0          0       7615   oled.o
@@ -1292,7 +1292,7 @@ Image component sizes
        116          4          0          0          0        533   timer.o
 
     ----------------------------------------------------------------------
-      5420        430       1788         28       1572     348229   Object Totals
+      5420        430       1788         28       1572     348237   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          8          0          0          1          0          0   (incl. Padding)
 
@@ -1333,8 +1333,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5616        462       1788         36       1572     345257   Grand Totals
-      5616        462       1788         36       1572     345257   ELF Image Totals
+      5616        462       1788         36       1572     345265   Grand Totals
+      5616        462       1788         36       1572     345265   ELF Image Totals
       5616        462       1788         36          0          0   ROM Totals
 
 ==============================================================================
