@@ -1,7 +1,7 @@
 #include "control.h"
 
 int num,num1;
-uint8_t KeyDeta;
+char KeyDeta;
 int add1;
 int add2;
 int add3;
@@ -13,33 +13,14 @@ int main()
 	main_Init();			//硬件初始化
 	OLED_menu();			//OLED界面初始化
 	
-//	line* lien = list_Init(); 
+	line* lien = list_Init(); 
 	//对二级菜单完成初始化后，将记录有二级菜单的地址传给lien
 	//以供后续菜单的显示
-	
+	threshold_value(lien);
 	while(1)
 	{
-		OLED_ShowNum(1,1,add1,5);
-		OLED_ShowNum(2,1,add2,5);
-		OLED_ShowNum(3,1,add3,5);
-		OLED_ShowNum(4,1,add4,5);
-		if(key[KeyDeta -1 ].single_flag == 1 && KeyDeta == 1)
-		{
-			add1++;
-		}
-		else if(key[KeyDeta - 1].single_flag == 1 && KeyDeta == 2 )
-		{
-			add3++;
-		}
-		else if(key[KeyDeta - 1].key_longflag == 1 && KeyDeta == 1)
-		{
-			add2++;
-		}
-		else if(key[KeyDeta - 1].key_longflag == 1 && KeyDeta == 2)
-		{
-			add4++;
-		}
-		Key_eliminate(KeyDeta);
+		
+//		Key_eliminate(KeyDeta);
 	}
 }
 
@@ -47,12 +28,12 @@ void TIM4_IRQHandler(void)//10ms
 {
 	if (TIM_GetITStatus(TIM4, TIM_IT_Update) == SET)//1ms
 	{
-		for(int i = 0 ;i < 2 ; i++)
+		for(int i = 1 ;i < 3 ; i++)
 		{
 				Key_Scan(i);
 			if(key[i].single_flag == 1 || key[i].key_longflag == 1)
 			{
-					KeyDeta = i + 1;
+					KeyDeta = i;
 			}	
 		}
 	}

@@ -12,11 +12,11 @@ typedef struct Keys
 }Keys;
 
 
-extern struct Keys key[2];
+extern struct Keys key[3];
 
 void Key_Init(void);
 void Key_Scan(uint8_t i);
-void Key_eliminate(int KeyDeta);
+void Key_eliminate(char* KeyDeta);
 
 
 #define Key0 PFin(3)

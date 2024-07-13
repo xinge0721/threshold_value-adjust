@@ -91,50 +91,126 @@ line* list_Init(void)
 
 
 
-//回到一级菜单
+//切换一级菜单
 void list_menu(void)
 {
 	OLED_Clear();				//OLED清屏，确保OLED中不会显示多于的数据。
-	OLED_ShowString_extrude(1,1,"L:Min or Max");//高亮一行字符串
-	OLED_ShowString(2,1,"A:Min or Max");
-	OLED_ShowString(3,1,"B:Min or Max");
+	OLED_ShowChar(1,1,'*');
+	OLED_ShowString(1,2,"L:Min or Max");//高亮一行字符串
+	OLED_ShowString(2,2,"A:Min or Max");
+	OLED_ShowString(3,2,"B:Min or Max");
+}
+//切换二级菜单
+void list_data(line* pr)
+{
+	OLED_Clear();				//OLED清屏，确保OLED中不会显示多于的数据。
+	OLED_ShowChar(1,1,'*');
+	OLED_ShowString(1,2,"Min:");
+	OLED_ShowString(2,2,"Max:");
+	OLED_ShowSignedNum(1,6,pr->data,3);
+	OLED_ShowSignedNum(2,6,pr->next->data,3);
 }
 
+
+
+
+
+
+
 //调阈值模式
-//void threshold_value(line* line)
-//{
-//	list_menu();//将OLED中的数据，切换为一级菜单的数据
-//	while(1)
-//	{
-//		if(KeyDeta == 1)
-//		{
-//			if (pr->next == pt )//如果指针的下一位是哨兵位则进入条件内
-//			{
-//				if(swap == 0)
-//					mood_menu = 1;
-//				else if(swap == 1)
-//					mood_work = 1;
-//				OLED_ShowCharsent(pr->data,1,pr->line,4);//将该行的高亮恢复
-//				pr = pr->next ->next;					 //连走两次next，绕过哨兵位
-//				OLED_ShowCharsentbright(pr->data,1,pr->line,4);//将第一行高亮
-//			}
-//			else			//如果指针没有指向哨兵位，则一切正常，正常的到下一位
-//			{
-//				ps = pr;
-//				pr = pr->next;
-//				OLED_ShowCharsentbright(pr->data,1,pr->line,4);	//将该行的高亮恢复
-//				OLED_ShowCharsent(ps->data,1,ps->line,4);		//下一行高亮
-//				if(swap == 0)
-//					mood_menu ++;
-//				else if(swap == 1)
-//					mood_work ++;				}
-//			Delay_ms(100);							//暂停一会，以防出错
-//			KeyDeta = 0;							//将按键标志位清零防止出现反复执行的情况
-//		}
-//		else if(KeyDeta == 2)
-//		{
-//		
-//		}
-//	}
-//}
+void threshold_value(line* line_sign)
+{
+	static char swap = 0;
+	list_menu();//将OLED中的数据，切换为一级菜单的数据
+	line* line_up = line_sign;
+	line* line    = line_sign ->next;
+	Key_eliminate(&KeyDeta);
+	while(1)
+	{
+		//若是短按下按键1,则向下滚动
+		if(KeyDeta == 1 && key[KeyDeta].single_flag == 1)
+		{
+			if (line->next == line_sign )//如果指针的下一位是哨兵位则进入条件内
+			{
+				if(!swap)
+				{
+					list_menu();
+				}
+				else 
+				{
+					list_data(line);
+				}
+				line = line->next->next;
+			}
+			else			//如果指针没有指向哨兵位，则一切正常，正常的到下一位
+			{
+					OLED_ShowChar(line->line,1,' ');
+					line = line ->next;
+				if(line->line == 0)
+					OLED_ShowChar(1,1,'*');
+				else
+					OLED_ShowChar(line->line,1,'*');
+
+			}
+			Key_eliminate(&KeyDeta); //清除按键标志位
+		}
+		else if( KeyDeta == 2 && key[KeyDeta ].Key_sta == 1 && key[KeyDeta].single_flag == 1)
+		{
+			if (line->prior == line_sign )//如果指针的下一位是哨兵位则进入条件内
+			{
+				if(!swap)
+				{
+					OLED_ShowChar(line->line,1,' ');
+					line = line->prior->prior;
+					OLED_ShowChar(line->line,1,'*');
+				}
+				else 
+				{
+					OLED_ShowChar(line->line,1,' ');
+					line = line->prior->prior;
+					OLED_ShowChar(line->line,1,'*');
+				}
+			}
+			else			//如果指针没有指向哨兵位，则一切正常，正常的到下一位
+			{
+					OLED_ShowChar(line->line,1,' ');
+					line = line ->prior;
+				if(line->line == 0)
+					OLED_ShowChar(1,1,'*');
+				else
+					OLED_ShowChar(line->line,1,'*');
+			}
+			Key_eliminate(&KeyDeta); //清除按键标志位
+		}
+		else if (key[KeyDeta ].key_longflag == 1 && key[KeyDeta].Key_sta == 1 )
+		{
+			
+			if(KeyDeta == 0x01)//要是长按按键一，则且换一二级菜单
+			{
+				if(!swap)//切换为二级菜单
+				{
+					swap = !swap;
+					line_sign = line;
+					line = line->up;
+					list_data(line);
+				}
+				else
+				{
+					swap = !swap;
+					line = line_up->next;
+					line_sign = line_up;
+					list_menu();
+				}
+				Key_eliminate(&KeyDeta);
+
+			}
+			else if(KeyDeta == 0x02) //要是长按按键二，则退出调阈值模式
+			{
+				Key_eliminate(&KeyDeta);
+				break;
+			}
+		}
+
+	}
+}
 

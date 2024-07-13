@@ -21,11 +21,11 @@ void Key_Init()
   * 参    数：无
   * 返 回 值：无
 */
-Keys key[2]={0};//初始化
+Keys key[3]={0};//初始化
 
 void Key_Scan(uint8_t i)
 {
-	int data = i + 3;
+	int data = i + 2;
 	key[i].Key_sta = PFin(data);
 	
 	switch(key[i].judge_sta)
@@ -55,11 +55,12 @@ void Key_Scan(uint8_t i)
 				{
 					if(key[i].Key_sta ==1)//松开
 					{
-						key[i].judge_sta =0;
+						key[i].judge_sta = 0;
 						if(key[i].ky_time<70)//小于700ms
 						{
 							key[i].ky_time = 0;
-							key[i].single_flag =1;//小于700ms松开手在确认
+							key[i].single_flag  = 1;//小于700ms松开手在确认
+							key[i].key_longflag = 0;
 						}
 					}
 					else									//按下
@@ -67,7 +68,7 @@ void Key_Scan(uint8_t i)
 						key[i].ky_time++;
 						if(key[i].ky_time>70)//大于700ms，到了700ms就执行长按功能
 						{
-							key[i].key_longflag=1;
+							key[i].key_longflag = 1;
 						}
 					}
 				}
@@ -80,14 +81,15 @@ void Key_Scan(uint8_t i)
   * 参    数：无
   * 返 回 值：无
 */
-void Key_eliminate(int KeyDeta)
+void Key_eliminate(char* KeyDeta)
 {
-	if(key[KeyDeta - 1].Key_sta == 1)
+	if(key[*KeyDeta ].Key_sta == 1)
 	{
-			key[KeyDeta - 1].judge_sta = 0;
-			key[KeyDeta - 1].single_flag = 0;
-			key[KeyDeta - 1].key_longflag = 0;
-			KeyDeta	 = 0;
+			key[*KeyDeta ].judge_sta = 0;
+			key[*KeyDeta ].single_flag = 0;
+			key[*KeyDeta ].key_longflag = 0;
+			key[*KeyDeta ].ky_time = 0;
+			*KeyDeta	 = 0;
 	}
 }
 

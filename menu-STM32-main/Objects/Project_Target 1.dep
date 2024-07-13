@@ -845,8 +845,8 @@ I (.\Library\stm32f10x_tim.h)(0x6659AEA5)
 I (.\Library\stm32f10x_usart.h)(0x6659AEA5)
 I (.\Library\stm32f10x_wwdg.h)(0x6659AEA5)
 I (.\Library\misc.h)(0x6659AEA5)
-F (.\Hardware\Key\Key.c)(0x66913314)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
-I (Hardware\Key\key.h)(0x66913301)
+F (.\Hardware\Key\Key.c)(0x6691DD96)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
+I (Hardware\Key\key.h)(0x6691DC86)
 I (.\User\sys\sys.h)(0x663B2BBD)
 I (.\Start\stm32f10x.h)(0x6659AEA5)
 I (.\Start\core_cm3.h)(0x6659AEA5)
@@ -881,7 +881,7 @@ I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
-F (.\Hardware\lian2\lian2.c)(0x66912FDA)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\lian2.o --omf_browse .\objects\lian2.crf --depend .\objects\lian2.d)
+F (.\Hardware\lian2\lian2.c)(0x6691E0C3)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\lian2.o --omf_browse .\objects\lian2.crf --depend .\objects\lian2.d)
 I (.\Start\stm32f10x.h)(0x6659AEA5)
 I (.\Start\core_cm3.h)(0x6659AEA5)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -910,8 +910,8 @@ I (.\Library\stm32f10x_tim.h)(0x6659AEA5)
 I (.\Library\stm32f10x_usart.h)(0x6659AEA5)
 I (.\Library\stm32f10x_wwdg.h)(0x6659AEA5)
 I (.\Library\misc.h)(0x6659AEA5)
-I (Hardware\lian2\lian2.H)(0x669118A9)
-I (.\User\control.h)(0x66912F52)
+I (Hardware\lian2\lian2.H)(0x6691D15F)
+I (.\User\control.h)(0x6691DC86)
 I (.\System\Delay.h)(0x663B21E0)
 I (.\User\sys\sys.h)(0x663B2BBD)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
@@ -920,8 +920,8 @@ I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (.\System\Timer.h)(0x6659AEA5)
 I (.\Hardware\Encoder\Encoder.h)(0x61B03662)
-I (.\Hardware\Key\Key.h)(0x66913301)
-I (.\Hardware\lian2\lian2.h)(0x669118A9)
+I (.\Hardware\Key\Key.h)(0x6691DC86)
+I (.\Hardware\lian2\lian2.h)(0x6691D15F)
 I (.\Hardware\OLED\OLED.h)(0x6690F496)
 I (.\User\Serial\Serial.h)(0x668BA90C)
 I (E:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
@@ -962,8 +962,8 @@ I (E:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (Hardware\OLED\OLED_Font.h)(0x65FD3694)
-F (.\User\main.c)(0x66913301)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (User\control.h)(0x66912F52)
+F (.\User\main.c)(0x6691DCEC)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (User\control.h)(0x6691DC86)
 I (.\Start\stm32f10x.h)(0x6659AEA5)
 I (.\Start\core_cm3.h)(0x6659AEA5)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1000,14 +1000,14 @@ I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (.\System\Timer.h)(0x6659AEA5)
 I (.\Hardware\Encoder\Encoder.h)(0x61B03662)
-I (.\Hardware\Key\Key.h)(0x66913301)
-I (.\Hardware\lian2\lian2.h)(0x669118A9)
-I (.\User\control.h)(0x66912F52)
+I (.\Hardware\Key\Key.h)(0x6691DC86)
+I (.\Hardware\lian2\lian2.h)(0x6691D15F)
+I (.\User\control.h)(0x6691DC86)
 I (.\Hardware\OLED\OLED.h)(0x6690F496)
 I (.\User\Serial\Serial.h)(0x668BA90C)
 I (E:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 F (.\User\control.c)(0x6690F324)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\control.o --omf_browse .\objects\control.crf --depend .\objects\control.d)
-I (User\control.h)(0x66912F52)
+I (User\control.h)(0x6691DC86)
 I (.\Start\stm32f10x.h)(0x6659AEA5)
 I (.\Start\core_cm3.h)(0x6659AEA5)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1044,13 +1044,13 @@ I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (E:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (.\System\Timer.h)(0x6659AEA5)
 I (.\Hardware\Encoder\Encoder.h)(0x61B03662)
-I (.\Hardware\Key\Key.h)(0x66913301)
-I (.\Hardware\lian2\lian2.h)(0x669118A9)
-I (.\User\control.h)(0x66912F52)
+I (.\Hardware\Key\Key.h)(0x6691DC86)
+I (.\Hardware\lian2\lian2.h)(0x6691D15F)
+I (.\User\control.h)(0x6691DC86)
 I (.\Hardware\OLED\OLED.h)(0x6690F496)
 I (.\User\Serial\Serial.h)(0x668BA90C)
 I (E:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
-F (.\User\control.h)(0x66912F52)()
+F (.\User\control.h)(0x6691DC86)()
 F (.\User\sys\sys.c)(0x663B25F4)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Hardware\Encoder -I .\Hardware\Key -I .\Hardware\lian2 -I .\Hardware\OLED -I .\User\sys -I .\User\uart -I .\User\Serial-IE:\Users\j\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="539" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\sys.o --omf_browse .\objects\sys.crf --depend .\objects\sys.d)
 I (User\sys\sys.h)(0x663B2BBD)
 I (.\Start\stm32f10x.h)(0x6659AEA5)
