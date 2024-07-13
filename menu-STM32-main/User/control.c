@@ -11,6 +11,7 @@ void main_Init(void)
 	Key_Init();											//按键初始化
 	Timer_Init();										//定时器初始化
 	Encoder_Init();									//旋转编码器初始化
+	Serial_Init();
 }
 
 void OLED_menu(void)

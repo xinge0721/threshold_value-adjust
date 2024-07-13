@@ -1,4 +1,3 @@
-
 #include "stm32f10x.h"                  // Device header
 #include "lian2.H"
 
@@ -121,7 +120,7 @@ void list_data(line* pr)
 void threshold_value(line* line_sign)
 {
 	char swap = 0;
-	int metering;
+	char metering;
 	list_menu();//将OLED中的数据，切换为一级菜单的数据
 	line* line_up = line_sign;
 	line* line    = line_sign ->next;
@@ -155,7 +154,7 @@ void threshold_value(line* line_sign)
 			}
 			Key_eliminate(&KeyDeta); //清除按键标志位
 		}
-		else if( KeyDeta == 2 && key[KeyDeta ].Key_sta == 1 && key[KeyDeta].single_flag == 1)
+		else if( KeyDeta == 2  && key[KeyDeta].single_flag == 1)
 		{
 			if (line->prior == line_sign )//如果指针的下一位是哨兵位则进入条件内
 			{
@@ -207,6 +206,7 @@ void threshold_value(line* line_sign)
 			}
 			else if(KeyDeta == 0x02) //要是长按按键二，则退出调阈值模式
 			{
+				Serial_SendByte(123);
 				Key_eliminate(&KeyDeta);
 				break;
 			}
@@ -216,15 +216,16 @@ void threshold_value(line* line_sign)
 		
 		if(swap == 1) //若是已经进入二级菜单，则启动旋转编码器的调阈值模式
 		{
-			line->data += Encoder_Get();				//获取自上此调用此函数后，旋转编码器的增量值，并将增量值加到Num上
+			int number= Encoder_Get();				//获取自上此调用此函数后，旋转编码器的增量值，并将增量值加到Num上
+			line->data += number ;
 			OLED_ShowSignedNum(line->line,6,line->data,3);
-			metering += line->data > 0 ? line->data : -line->data;
+			metering += number  > 0 ? number  : - number ;
 			for(int i = 0 ; i < metering ;i++)
 			{
-				if(line->data >= 0 );
-//					Serial_SendByte(line->Serial);
-				else ;
-//					Serial_SendByte((line->Serial)+1);
+				if(number >= 0 )
+					Serial_SendByte(line->Serial);
+				else 
+					Serial_SendByte((line->Serial)+1);
 			}
 			metering = 0;
 		}

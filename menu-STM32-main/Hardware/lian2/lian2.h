@@ -3,6 +3,7 @@
 
 #include "control.h"
 
+extern char KeyDeta;
 
 typedef struct line {
     struct line* prior;//???¨°?¡À?¨®?¡ã?¡Â

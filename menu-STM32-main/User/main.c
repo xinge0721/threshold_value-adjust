@@ -1,11 +1,6 @@
 #include "control.h"
 
-int num,num1;
-char KeyDeta;
-int add1;
-int add2;
-int add3;
-int add4;
+char KeyDeta;  //该变量的定义视乎只能放到主函数内，否则会爆出重复定义的bug
 
 
 int main()
@@ -16,7 +11,8 @@ int main()
 	line* lien = list_Init(); //旋转编码器调阈值的初始化
 														//接受这个结构体
 														//然后传到下面的函数，即可开启调阈值模式
-	threshold_value(lien);
+	threshold_value(lien);		//只要调用这个函数，且将上面的结构体传入函数内
+														//就开启了调阈值模式。
 	while(1)
 	{
 		

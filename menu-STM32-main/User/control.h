@@ -5,7 +5,6 @@
 //全局变量的声明或定义
 
 extern int16_t Encoder_Count;					//全局变量，用于计数旋转编码器的增量值
-extern char KeyDeta;
 extern struct Keys key[3];
 
 
